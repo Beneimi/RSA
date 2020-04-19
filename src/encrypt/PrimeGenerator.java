@@ -11,21 +11,17 @@ public class PrimeGenerator {
         BigInteger p;
         BigInteger d;
         BigInteger s;
-        BigInteger a;
 
         while (true){
             p = RandomBitsOf(bits);
             d = p.subtract(BigInteger.ONE);
             s = new BigInteger("1");
 
-
-            while (!d.mod(BigInteger.TWO).equals(BigInteger.ONE)){
+            while (!d.testBit(0)){
                 d = d.divide(BigInteger.TWO);
                 s = s.multiply(BigInteger.TWO);
             }
             s = s.divide(BigInteger.TWO);
-            // r and s calculated
-
 
             if (Test(p,d,s)){
                 break;

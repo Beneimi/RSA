@@ -38,7 +38,6 @@ public class EncryptMath {
         }
         BigInteger q;
         BigInteger r = new BigInteger("1");
-        BigInteger gcd = new BigInteger("1");
         BigInteger s0 = new BigInteger("1");
         BigInteger s1 = new BigInteger("0");
         BigInteger t0 = new BigInteger("0");
@@ -47,7 +46,6 @@ public class EncryptMath {
         BigInteger buffer;
 
         while (!r.equals(BigInteger.ZERO)){
-            gcd = r;
             q = a.divide(b);
             r = a.subtract(b.multiply(q));
             a = b;
@@ -61,18 +59,6 @@ public class EncryptMath {
             t0 = buffer;
 
         }
-
         return t0;
-
     }
-
-    public static BigInteger Pow(BigInteger base, BigInteger pow){
-
-        while (!pow.equals(BigInteger.ZERO)){
-            base = base.multiply(base);
-            pow.subtract(BigInteger.ONE);
-        }
-        return base;
-    }
-
 }
