@@ -36,7 +36,7 @@ public class EncryptMath {
             b = m;
             a=n;
         }
-        BigInteger q;
+        BigInteger q = new BigInteger("0");
         BigInteger r = new BigInteger("1");
         BigInteger s0 = new BigInteger("1");
         BigInteger s1 = new BigInteger("0");
@@ -46,6 +46,9 @@ public class EncryptMath {
         BigInteger buffer;
 
         while (!r.equals(BigInteger.ZERO)){
+
+            Logger.Detailed("k= "+Logger.count()+ " r: "+a.toString()+" q: "+q.toString()+" x: "+s0.toString()+" y: "+t0.toString());
+
             q = a.divide(b);
             r = a.subtract(b.multiply(q));
             a = b;
@@ -58,7 +61,11 @@ public class EncryptMath {
             t1 = t0.subtract(q.multiply(t1));
             t0 = buffer;
 
+
         }
+
+        Logger.Detailed("k= "+Logger.count()+ " r: "+a.toString()+" q: "+q.toString()+" x: "+s0.toString()+" y: "+t0.toString());
+
         return t0;
     }
 }
