@@ -70,6 +70,10 @@ public class RSA {
         return EncryptMath.ModPow(c,d,n).toString();
     }
 
+    public static String Encrypt(BigInteger e, BigInteger n, BigInteger m){
+        return EncryptMath.ModPow(m,e,n).toString();
+    }
+
     public String getPublicKey(){
         return "e: " + this.publicKey.toString() + ", n: " + this.n.toString();
     }
